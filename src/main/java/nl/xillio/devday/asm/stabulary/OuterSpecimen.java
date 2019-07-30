@@ -23,4 +23,8 @@ public class OuterSpecimen<@TypeAnnotationSpecimen T extends OuterSpecimen<@Type
             return 2;
         }
     }
+
+    public List<InnerSpecimen> getInners(String pufi) {
+        return null;
+    }
 }

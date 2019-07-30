@@ -77,6 +77,13 @@ public class ClassPrinter extends ClassVisitor {
 
     @Override
     public void visitAttribute(Attribute attribute) {
+        LOGGER.info("Attribute " + attribute.type + " : " + attribute.toString());
         super.visitAttribute(attribute);
+    }
+
+    @Override
+    public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+        LOGGER.info("Method " + convertModifierBitmapToString(access) + ": " + name + "; Descriptor: " + descriptor + "; Signature: " + signature + "; Exceptions: " + (exceptions == null ? " " : String.join(",", exceptions)));
+        return super.visitMethod(access, name, descriptor, signature, exceptions);
     }
 }
